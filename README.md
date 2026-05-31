@@ -92,12 +92,13 @@ show [OPTIONS] <FILE>
 
 ### Options
 
-| Option            | Description                                           | Default        |
-| ----------------- | ----------------------------------------------------- | -------------- |
+| Option            | Description                                                   | Default        |
+| ----------------- | ------------------------------------------------------------- | -------------- |
 | `-t, --theme <T>` | Color theme (see [Themes](#themes)). Names are fuzzy-matched. | `gruvbox-dark` |
-| `--list-themes`   | List all available themes and exit.                   |                |
-| `-h, --help`      | Print help.                                           |                |
-| `-V, --version`   | Print version.                                        |                |
+| `--list-themes`   | List all available themes and exit.                           |                |
+| `-h, --help`      | Print help.                                                   |                |
+| `-V, --version`   | Print version.                                                |                |
+| `-u, --update`    | Update to the latest version.                                 |                |
 
 ### Themes
 

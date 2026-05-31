@@ -4,7 +4,10 @@ use std::io;
 use syntect::easy::HighlightLines;
 use syntect::highlighting::{Style, Theme, ThemeSet};
 use syntect::util::{as_24_bit_terminal_escaped, LinesWithEndings};
+use anyhow;
 use owo_colors::OwoColorize;
+
+mod update;
 
 const DEFAULT_THEME: &str = "gruvbox-dark";
 
@@ -19,16 +22,21 @@ struct Args {
 
     #[arg(long)]
     list_themes: bool,
+
+    #[arg(long)]
+    update: bool,
 }
 
-fn main() {
+fn main() -> anyhow::Result<()> {
     let args = Args::parse();
-
+    if args.update {
+        return update::update();
+    };
     let theme_set: ThemeSet = two_face::theme::extra().into();
 
     if args.list_themes {
         list_themes(&theme_set);
-        return;
+        return Ok(());
     }
 
     let file_name = match args.file_name {
@@ -46,7 +54,7 @@ fn main() {
         Ok(file) => file,
         Err(_) => {
             println!("File or folder not found, please make sure your path is correct");
-            return;
+            return Ok(());
         }
     };
 
@@ -59,7 +67,8 @@ fn main() {
         io::stdout()
             .write_all(line.as_bytes())
             .expect("Failed to write to stdout");
-    }
+    };
+    return Ok(());
 }
 
 fn highlight_content(content: &str, theme: &Theme, file_type: &str) -> Vec<String> {
