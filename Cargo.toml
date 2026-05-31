@@ -1,0 +1,13 @@
+[package]
+name = "show"
+version = "0.1.0"
+edition = "2021"
+description = "A bat-like syntax highlighter"
+license = "MIT"
+repository = "https://github.com/username/repo"
+
+[dependencies]
+clap = { version = "4.6.1", features = ["derive"] }
+owo-colors = "4.3.0"
+syntect = "5.3.0"
+two-face = "0.5.1"
